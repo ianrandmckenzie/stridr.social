@@ -1,0 +1,5 @@
+<% if !current_user.youtube_filter %>
+    <%= image_tag("social-icons/png/003-youtube.png", alt: "YouTube Logo", class: "toggle-icon toggle-icon-youtube") %>
+<% else %>
+    <%= image_tag("social-icons/png/003-youtube.png", alt: "YouTube Logo", class: "toggle-icon toggle-icon-youtube account-nonactive") %>
+<% end %>

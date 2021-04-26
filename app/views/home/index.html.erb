@@ -1,0 +1,216 @@
+<!-- Main body content. Cards go here. -->
+<div id="card-wrapper">
+  <% if !current_user %>
+  <%= link_to new_user_session_path do %>
+  <div class="card-container">
+      <div class="social-origin-stridr %>"></div>
+      <div class="row">
+        <div class="col-xs-12 card-head-title text-center">
+          <h1>
+            <strong>STRIDR.SOCIAL</strong><br />Your All-in-One<br />Social Discovery Engine
+          </h1>
+        <br />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 card-bar">
+          <span>
+            <em>Supported Platforms: Facebook, Pinterest, Tumblr, Twitter, YouTube, DeviantArt, Twitch, Spotify, and Reddit!</em>
+          </span>
+        <br />
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5 card-head-logo stridr-card-head-logo" style="background-image: url(<%= asset_path 'plain-logo.png' %>;)"></div>
+        <div class="col-xs-7 col-sm-9 card-body">
+          <!-- strip_tags removes potential markup from Tumblr profile descriptions -->
+          <p>Stridr looks at everything you like on social media and suggests more cool stuff; cross platform, all on stridr.social! It also lets you compare your likes/follows with your friends. More features and platforms coming soon!</p>
+          <ul>
+            <li><%= SocialPage.all.count %> Social Pages to browse on Stridr!</li>
+            <li>
+              <%= User.all.count %> people use Stridr!
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 card-based-on">
+          <span>
+            Try us out!
+          </span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+    <% if @unsynced %>
+    <!-- BEGIN CLOSING NOTIFICATION -->
+    <div class="card-container card-container-stridr">
+      <div class="social-origin-stridr"></div>
+      <div class="row">
+        <div class="col-xs-8 card-head-title">
+          <h3>
+            Hmm. We're not sure what to hatch up for you.
+          </h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 card-bar">
+          <span>
+            Stridr
+          </span>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5  card-head-logo" style="background-image:url(<%= asset_path 'hatching.png' %>;)"></div>
+        <div class="col-xs-7 col-sm-9 card-body">
+          <p>Until we know what you like on social media, we don't have much to suggest to you. Connect your social media accounts to see more accurate suggestions!</p>
+          <ul>
+            <li>
+              <%= link_to('Sync Your Social Platforms', accounts_customize_path)  %>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 card-based-on">
+          <span>
+            What're you waiting for?!
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- END CLOSING NOTIFICATION -->
+    <% end %>
+  <!-- BEGIN SOCIAL_PAGES.EACH -->
+  <%= render partial: 'social_pages', object: @sample_feed, locals: { current_user: current_user } %>
+  <!-- END SOCIAL_PAGES.EACH -->
+
+  <% if current_user && !current_user.recommended_social_pages.first && !@unsynced %>
+  <% @hatching = true %>
+  <!-- BEGIN CLOSING NOTIFICATION -->
+  <div class="card-container card-container-stridr">
+    <div class="social-origin-stridr"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          We're hatching suggestions for you right now!
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          Stridr
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5  card-head-logo" style="background-image:url(<%= asset_path 'hatching.png' %>;)"></div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <p>The hamster wheels in our servers are spinning away to show you cool
+          new stuff on social media! Check back in a little bit. In the meantime,
+         check out your friends profiles and see what you have in common. No
+          friends yet? Share your profile and bring them on board!</p>
+        <ul>
+          <li>
+            <%= link_to('Sync your Social Accounts for more results', accounts_customize_path)  %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          You know you wanna!
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- END CLOSING NOTIFICATION -->
+  <% end %>
+      <% if current_user && current_user.recommended_social_pages.first %>
+      <!-- BEGIN CLOSING NOTIFICATION -->
+      <div class="card-container card-container-stridr">
+        <div class="social-origin-stridr"></div>
+        <div class="row">
+          <div class="col-xs-8 card-head-title">
+            <h3>
+              Want more suggestions?
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 card-bar">
+            <span>
+              Stridr
+            </span>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5  card-head-logo" style="background-image:url(<%= asset_path 'suggestions-are-coming.png' %>;)"></div>
+          <div class="col-xs-7 col-sm-9 card-body">
+            <p>Because the nerds at Stridr only gather data with your permission (and everyone else who signs up), we can't offer you as much as we'd like. You can help us fix that! Invite your friends to join us on Stridr now! Don't forget to sync all of your social accounts!</p>
+            <ul>
+              <li>
+                <%= link_to('Sync Social Accounts', accounts_customize_path)  %>
+              </li>
+              <li>
+                Share your profile:
+              </li>
+              <li>
+                <%= social_share_button_tag("Compare your likes/follows/subscriptions on Social Media with mine!", :url => "https://stridr.social/user/" + current_user.id.to_s) %>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 card-based-on">
+            <span>
+              You know you wanna!
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- END CLOSING NOTIFICATION -->
+      <% end %>
+</div> <!-- end card-wrapper -->
+<% if !@sample_feed.last_page? && !@not_logged_in && !@hatching %>
+<div class="card-container card-container-stridr text-center footer">
+  <div class="row">
+    <div class="col-xs-12 card-head-title">
+      <h3 class="pagination">
+        <%= link_to_next_page(@sample_feed, "Load More", remote: true) %>
+      </h3>
+      <%= image_tag("loading.png", :alt => "Loading icon", :width => 50, :height => 50, class: "loading") %>
+    </div>
+  </div>
+</div>
+<% end %>
+<% if @not_logged_in && !@hatching %>
+<div class="card-container card-container-stridr text-center footer">
+  <div class="row">
+    <div class="col-xs-12 card-head-title">
+      <h3 class="pagination">
+        Log in to see more suggestions!
+      </h3>
+    </div>
+  </div>
+</div>
+<% end %>

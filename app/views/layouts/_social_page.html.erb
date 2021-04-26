@@ -1,0 +1,30 @@
+<% if page.platform_name.downcase == "deviantart" %>
+    <%= render partial: "layouts/cards/deviantart_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "facebook" %>
+    <%= render partial: "layouts/cards/facebook_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "instagram" %>
+    <%= render partial: "layouts/cards/instagram_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "pinterest" %>
+    <%= render partial: "layouts/cards/pinterest_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "reddit" %>
+    <%= render partial: "layouts/cards/reddit_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "spotify" %>
+    <%= render partial: "layouts/cards/spotify_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "tumblr" %>
+    <%= render partial: "layouts/cards/tumblr_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "twitter" %>
+    <%= render partial: "layouts/cards/twitter_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "twitch" %>
+    <%= render partial: "layouts/cards/twitch_card", locals: { page: page } %>
+<% end %>
+<% if page.platform_name.downcase == "youtube" %>
+    <%= render partial: "layouts/cards/youtube_card", locals: { page: page } %>
+<% end %>

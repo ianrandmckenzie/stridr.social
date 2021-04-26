@@ -1,0 +1,75 @@
+
+<!-- Main body content. Cards go here. -->
+<div id="card-wrapper">
+  <!-- BEGIN USER PROFILE -->
+<div class="card-container card-container-stridr">
+    <div class="social-origin-stridr"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          Your matches with <%= @user.username %>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          Stridr
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image: url(<%= @user.image %>)"></div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <!-- strip_tags removes potential markup from Tumblr profile descriptions -->
+        <p>Here's a list of matches with <%= @user.username %>. Don't forget to add all of your social <%= link_to('Accounts', accounts_customize_path)  %> to increase accuracy!</p>
+        <ul>
+          <li>
+            <%= @matches.count %> interests in common
+          </li>
+          <li>
+            <%= link_to difference_path(@user.id) do %>
+              <%= @differences.count %> interests you don't share
+            <% end %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          Scroll on!
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- END USER PROFILE -->
+
+  <!-- BEGIN SOCIAL_PAGES.EACH -->
+<% if @matches.count == 0 %>
+<h2>...oh. There's nothing to show!</h2>
+  <% if @user.id == current_user.id %>
+  <h3>Stalking your own profile, eh?</h3>
+  <% else %>
+  <h3>Connect your social <%= link_to('Accounts', accounts_customize_path)  %> to increase accuracy! <br /><br />Alternatively, you may have too many filters on. <%= link_to "Whitelist more platforms to see more.", edit_user_registration_path %></h3>
+  <% end %>
+<% end %>
+<%= render partial: 'social_pages', object: @social_pages, locals: { current_user: current_user } %>
+  <!-- END SOCIAL_PAGES.EACH -->
+</div> <!-- end card-wrapper -->
+<% if !@social_pages.last_page? %>
+<div class="card-container card-container-stridr text-center footer">
+  <div class="row">
+    <div class="col-xs-12 card-head-title">
+      <h3 class="pagination">
+        <%= link_to_next_page(@social_pages, "Load More", remote: true) %>
+      </h3>
+      <span class="fa fa-circle-o-notch loading" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+<% end %>

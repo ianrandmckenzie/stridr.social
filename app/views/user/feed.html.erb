@@ -1,0 +1,27 @@
+
+<div id="loading_card" class="card-container card-container-stridr">
+  <%= render partial: 'user/loading_card', locals: { current_user: current_user } %>
+</div>
+<!-- Main body content. Cards go here. -->
+<div id="card-wrapper">
+<!-- BEGIN SOCIAL_PAGES.EACH -->
+<% if @social_pages.count == 0 %>
+<h2>...oh. There's nothing to show!</h2>
+<h3>Connect your social <%= link_to('Accounts', accounts_customize_path)  %> to populate your feed!</h3>
+<% end %>
+<%= render partial: 'social_pages', object: @social_pages, locals: { current_user: current_user } %>
+  <!-- END SOCIAL_PAGES.EACH -->
+</div> <!-- end card-wrapper -->
+
+<% if !@social_pages.last_page? %>
+<div class="card-container card-container-stridr text-center footer">
+  <div class="row">
+    <div class="col-xs-12 card-head-title">
+      <h3 class="pagination">
+        <%= link_to_next_page(@social_pages, "Load More", remote: true) %>
+      </h3>
+      <span class="fa fa-circle-o-notch loading" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+<% end %>

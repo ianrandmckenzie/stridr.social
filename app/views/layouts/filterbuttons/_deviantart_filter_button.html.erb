@@ -1,0 +1,5 @@
+<% if !current_user.deviantart_filter %>
+    <%= image_tag("social-icons/png/008-deviantart.png", alt: "DeviantArt Logo", class: "toggle-icon toggle-icon-deviantart") %>
+<% else %>
+    <%= image_tag("social-icons/png/008-deviantart.png", alt: "DeviantArt Logo", class: "toggle-icon toggle-icon-deviantart account-nonactive") %>
+<% end %>

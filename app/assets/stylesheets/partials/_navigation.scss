@@ -1,0 +1,276 @@
+// desktop navigation popover styles
+.flash .fa-times {
+	float: right;
+	padding-left: 15px;
+	cursor: pointer;
+}
+
+.popover {
+	border: none;
+	border-radius: 0;
+	min-width: 180px;
+}
+
+.popover.bottom {
+	margin-top: 38px;
+	margin-right: 50px;
+	right: 50px;
+	.arrow {
+	  border: none;
+		margin-left: 0;
+	}
+}
+#accountPopover, #settingsPopover {
+  h5 {
+    margin-bottom: 20px;
+  }
+		ul {
+			list-style-type: none;
+			margin: 0 auto;
+			padding: 0;
+
+			li {
+				margin: 15px;
+			}
+			li a:link,
+			li a:active,
+			li a:visited {
+				color: #aaa;
+			}
+			li a:hover {
+				color: #547791;
+				text-decoration: none;
+			}
+		}
+}
+
+.navbar-fixed-top {
+	z-index: 100;
+}
+
+#desktop-toggles {
+	display: none;
+  height: 60px;
+  background-color: #fff;
+	box-shadow: 1px 2px 8px -1px #999;
+  transition: 0.4s;
+  ul {
+		margin: 0 auto;
+		text-align: center;
+		padding: 0;
+    li {
+      list-style-type: none;
+      display: inline-block;
+      img {
+        height: 25px;
+      }
+      img:hover {
+        cursor: pointer;
+      }
+			.account-nonactive {
+				-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+				filter: grayscale(100%);
+				opacity: 0.5;
+			}
+			.account-active {
+
+			}
+    }
+  }
+}
+
+.navigation-wrapper {
+	width: 100%;
+	margin: 0 auto;
+}
+nav {
+	text-align: right;
+	background: #fff;
+	height: 75px;
+	box-shadow: 1px 2px 8px -1px #999;
+	img {
+		float: left;
+		height: 65px;
+		margin: 15px;
+		margin-top: 5px;
+		padding-left: 10px;
+		margin-right: 0px;
+		padding-right: 0px;
+		width: auto;
+		display: inline-block;
+	}
+}
+
+#mobile-nav-icon {
+	margin: 18px 15px;
+	border: 0;
+	color: #999999;
+	background-color: #fff;
+	span {
+		font-size: 1.2em;
+	}
+}
+
+/* Main links for user on larger screens. Use other nav for smaller screens */
+
+.logged-in-desktop-links {
+	list-style-type: none;
+	display: inline;
+  li {
+  	display: inline-block;
+  	line-height: 75px;
+  	margin: 0 15px;
+  }
+	li:last-child {
+		margin-right: 30px;
+	}
+	li a:link,
+	li a:active,
+	li a:visited,
+	li p {
+		color: #aaa;
+	}
+	li a:hover {
+		color: #547791;
+		text-decoration: none;
+	}
+}
+/* Search styles */
+.navbar-form {
+	margin-left: 10px;
+}
+.search-button, .input-group .form-control {
+	border-radius: 0px;
+	margin: 20px 0;
+}
+.input-group .form-control {
+	width: 35%;
+	margin: 0px;
+}
+.search-button {
+	border-right: hidden;
+}
+.search-bar {
+	margin-top: 10px;
+}
+.results-search-txt, .search-button {
+	margin: 0px;
+}
+
+/* The side navigation menu */
+
+.sidenav {
+	height: 100%;
+		/* 0 width - change this with JavaScript */
+	width: 0;
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	right: 0;
+	background-color: #fff;
+	margin-top: 75px;
+	overflow-x: hidden;
+	padding-top: 60px;
+	/* 0.5 second transition effect to slide in the sidenav */
+	transition: 0.4s;
+	/* The navigation menu links */
+	a, p {
+		padding: 3px 3px 3px 32px;
+		text-decoration: none;
+		font-size: 19px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+	a:hover
+	a:active,
+	a:focus {
+		color: #547791;
+	}
+	.closebtn {
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-size: 36px;
+		margin-left: 0px;
+	}
+  .toggle-platforms {
+		margin-bottom: 100px;
+    p {
+      padding: 32px;
+      text-align: center;
+    }
+    ul {
+			text-align: center;
+			margin: 0;
+			margin-left: 32px;
+			padding: 0;
+      li {
+				margin: 0;
+				list-style-type: none;
+				padding: 20px 0;
+        img {
+          width: 40px;
+          height: auto;
+        }
+        .account-nonactive {
+          -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+          filter: grayscale(100%);
+          opacity: 0.5;
+        }
+				.account-active {
+
+				}
+      }
+    }
+  }
+}
+
+/* ============================== */
+/* ======= MEDIA QUERIES ======== */
+
+
+@media screen and (max-height: 450px) {
+	/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+@media screen and (max-width: 767px) {
+	/* slide the entire layout up to the navigation bar on smaller devices */
+	#card-wrapper {
+		margin-bottom: 10px;
+	}
+
+	.search-bar {
+		margin-top: 0px;
+		margin-left: 10px;
+	}
+}
+
+/* when the hamburger appears, hide the desktop nav */
+@media screen and (max-width: 993px) {
+	.logged-in-desktop-links {
+		display: none;
+	}
+}
+@media screen and (min-width: 994px) {
+	/* hides nav hamburger, 600px and above */
+	#mobile-nav-icon {
+		display: none;
+	}
+	/* bit more margin for tablet-ish size */
+	#or {
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+}
+@media screen and (min-width: 991px) {
+	/* hides the 'or' divider on larger screens where the layout is side-by-side */
+	#or {
+		display: none;
+	}
+}

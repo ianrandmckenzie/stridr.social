@@ -1,0 +1,3 @@
+<% @social_pages.each do |page| %>
+  <%= render partial: "layouts/social_page", locals: { page: page, current_user: current_user } %>
+<% end %>

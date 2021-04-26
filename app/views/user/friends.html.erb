@@ -1,0 +1,167 @@
+
+<!-- Main body content. Cards go here. -->
+<div id="card-wrapper">
+  <% if current_user.following.count < 1 %>
+  <!-- BEGIN NOTIFICATION -->
+  <div class="card-container card-container-stridr">
+    <div class="social-origin-stridr"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          ...oh, no! You have no friends!
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          Stridr
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image: url(<%= current_user.image %>)"></div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <p>Invite your friends to Stridr so you can compare interests and increase Stridr's suggestion accuracy!</p>
+        <ul>
+          <li>
+            Compare <%= current_user.find_liked_items.count %> of your likes/follows with your friends!
+          </li>
+          <li>
+            Share your profile:
+          </li>
+          <li>
+            <%= social_share_button_tag("Compare your likes/follows/subscriptions on Social Media with mine!", :url => "https://stridr.social/user/" + current_user.id.to_s) %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          What're you waiting for?!
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- END NOTIFICATION -->
+  <% end %>
+
+<% @social_pages.each do |page| %>
+<!-- BEGIN USER PROFILES -->
+<%= link_to profile_path(page.id) do %>
+<div class="card-container card-container-stridr">
+    <div class="social-origin-stridr"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          <%= page.username %>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          <% if !page.location %>
+          Stridr
+          <% else %>
+          <%= page.location %>
+          <% end %>
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <% if page.image %>
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image: url(<%= page.image %>)"></div>
+      <% else %>
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image:url(<%= asset_path 'logo-bw.png' %>;)"></div>
+      <% end %>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <p>
+          <% if !page.description %>
+          A Stridr user.
+          <% else %>
+          <%= page.description %>
+          <% end %>
+        </p>
+        <ul>
+          <li>
+            <%= page.find_liked_items.count %> likes/follows across social media
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          Scroll on!
+        </span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <!-- END USER PROFILE -->
+<% end %>
+
+<% if current_user.following.count > 0 %>
+<!-- BEGIN CLOSING NOTIFICATION -->
+<div class="card-container card-container-stridr">
+  <div class="social-origin-stridr"></div>
+  <div class="row">
+    <div class="col-xs-8 card-head-title">
+      <h3>
+        Want to see more?
+      </h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 card-bar">
+      <span>
+        Stridr
+      </span>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+      <% if current_user.image %>
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image: url(<%= current_user.image %>)"></div>
+      <% else %>
+      <div class="col-xs-5  card-head-logo card-head-logo-stridr" style="background-image:url(<%= asset_path 'logo-bw.png' %>;)"></div>
+      <% end %>
+      <div class="col-xs-7 col-sm-9 card-body">
+      <p>Invite your friends to Stridr so you can compare interests and increase Stridr's suggestion accuracy!</p>
+      <ul>
+        <li>
+          Compare <%= current_user.find_liked_items.count %> of your likes/follows with your friends!
+        </li>
+        <li>
+          Share your profile:
+        </li>
+        <li>
+          <%= social_share_button_tag("Compare your likes/follows/subscriptions on Social Media with mine!", :url => "https://stridr.social/user/" + current_user.id.to_s) %>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 card-based-on">
+      <span>
+        What're you waiting for?!
+      </span>
+    </div>
+  </div>
+</div>
+<!-- END CLOSING NOTIFICATION -->
+<% end %>
+</div> <!-- end card-wrapper -->

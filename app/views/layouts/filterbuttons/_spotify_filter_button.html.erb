@@ -1,0 +1,5 @@
+<% if !current_user.spotify_filter %>
+    <%= image_tag("social-icons/png/009-spotify.png", alt: "Spotify Logo", class: "toggle-icon toggle-icon-spotify") %>
+<% else %>
+    <%= image_tag("social-icons/png/009-spotify.png", alt: "Spotify Logo", class: "toggle-icon toggle-icon-spotify account-nonactive") %>
+<% end %>

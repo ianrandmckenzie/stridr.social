@@ -1,0 +1,432 @@
+/*
+COLORS:
+Blue
+#edeff0 - background
+#547791
+#27aae1
+#74cae9
+#c9eaf7
+#cce4b7
+#bada8b
+#8dc63f
+Green
+*/
+
+$error-red: #cc0000;
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: #edeff0;
+	// background: rgba(204, 228, 184, 0.9);
+}
+
+p, .deviantart-tags {
+  font-size: 0.95em;
+  line-height: 1.75em;
+  font-weight: 100;
+  color: #777;
+}
+
+#error-page-image {
+  width: 400px;
+	padding: 0;
+  margin: 40px auto 0;
+}
+
+.error-container .error-message {
+	font-size: 1.5em;
+	padding: 20px;
+}
+
+.error-container h1 {
+	color: #777;
+}
+
+.error-container .btn.go-home {
+	border: 1px solid #ccc;
+	background-color: #fff;
+	margin: 15px;
+	border-radius: 0px;
+	color: #888;
+	letter-spacing: 0.5px;
+	width: 150px;
+}
+
+#errors {
+	color: $error-red;
+	font-weight: bold;
+	/* I dont want to see this, looks silly */
+	h2 {
+    display: none;
+	}
+  ul li {
+		font-size: 1.15em;
+    display: inline-block;
+		color: $error-red;
+  }
+	ul li::after {
+		content: ',\00a0';
+	}
+	ul li:last-child::after {
+		content: '';
+	}
+}
+
+strong a {
+	color: #547791;
+}
+
+#card-wrapper {
+	padding: 0 10px 10px;
+	margin: 40px auto;
+	margin-top: 150px;
+	max-width: 650px;
+}
+.card-container, {
+	margin: 0 auto;
+	background-color: #fff;
+	width: 100%;
+	margin-top: 15px;
+	padding: 15px 30px;
+	position: relative;
+	box-shadow: 1px 2px 8px -1px #999;
+}
+
+.card-head-logo,
+.card-share,
+.card-head-title,
+.card-bar,
+.card-body,
+.card-based-on {
+	padding: 5px;
+}
+.card-head-logo {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	box-shadow: 1px 2px 8px -1px #999;
+}
+.card-share {
+	height: 100%;
+	width: 110px;
+	margin: 10px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.card-share.card-share-thumb .card-head-logo {
+	height: 50px;
+	width: 50px;
+}
+
+.card-share.card-share-thumb {
+	width: 50px;
+}
+
+.feed-image {
+	margin: 0 auto;
+}
+
+.card-share .card-head-logo {
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-left: 0px;
+}
+
+.card-head-logo-stridr {
+	height:50px;
+	width: 50px;
+}
+
+.stridr-card-head-logo {
+	background-size: contain;
+}
+
+.card-head-title h3,
+.card-head-title h4 {
+	color: #547791;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	padding-left: 5px;
+	font-size: 1.75em;
+}
+.card-head-title h4 {
+	color: #444;
+	padding: 20px 0;
+	font-weight: 100;
+	font-size: 1.5em;
+}
+.card-bar {
+	padding: 0 0 0 10px;
+  span {
+  	color: #547791;
+  	font-size: 0.95em;
+  	padding: 0;
+  	margin: 0;
+  	font-weight: normal;
+		a {
+	  	color: #547791;
+		}
+  }
+	hr {
+		height: 2px;
+		background-color: #cce4b8;
+		margin: 5px 0;
+		padding: 0;
+	}
+}
+
+
+.card-body {
+	p {
+		word-wrap: break-word;
+	}
+	h3 {
+		font-size: 1.2em;
+		text-transform: uppercase;
+	}
+	span {
+		padding-left: 0px;
+		font-weight: 100;
+		font-size: 0.95em;
+	}
+	ul {
+		margin: 0;
+		padding: 5px 0 0 5px;
+		list-style-type: none;
+		li {
+			a {
+				font-weight: bold;
+				color: #547791;
+			}
+			font-size: 0.95em;
+			padding-bottom: 10px;
+			color: #547791;
+		}
+	}
+}
+
+.card-based-on span {
+	font-size: 0.75em;
+	letter-spacing: 0.2px;
+	color: #ccc;
+	text-transform: uppercase;
+}
+
+.social-origin-facebook,
+.social-origin-youtube,
+.social-origin-twitter,
+.social-origin-pinterest,
+.social-origin-reddit,
+.social-origin-spotify,
+.social-origin-tumblr,
+.social-origin-instagram,
+.social-origin-twitch,
+.social-origin-deviantart,
+.social-origin-stridr {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	z-index: 10;
+	height: 30px;
+	width: 30px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 4px;
+}
+.social-origin-facebook {
+	background-image: image-url('social-icons/png/005-facebook.png');
+}
+.social-origin-youtube {
+	background-image: image-url('social-icons/png/003-youtube.png');
+}
+.social-origin-twitter {
+	background-image: image-url('social-icons/png/004-twitter.png');
+}
+.social-origin-pinterest {
+	background-image: image-url('social-icons/png/001-pinterest.png');
+}
+.social-origin-reddit {
+	background-image: image-url('social-icons/png/010-reddit.png');
+}
+.social-origin-spotify {
+	background-image: image-url('social-icons/png/009-spotify.png');
+}
+.social-origin-tumblr {
+	background-image: image-url('social-icons/png/002-tumblr.png');
+}
+.social-origin-instagram {
+	background-image: image-url('social-icons/png/006-instagram.png');
+}
+.social-origin-twitch {
+	background-image: image-url('social-icons/png/007-twitch.png');
+}
+.social-origin-deviantart {
+	background-image: image-url('social-icons/png/008-deviantart.png');
+}
+.social-origin-stridr {
+	background-image: image-url('plain-logo.png');
+}
+
+/* LOG IN PAGE STYLES */
+
+.log-in-container {
+	margin: 0 auto;
+	text-align: center;
+  /* for profile page */
+  .edit-profile {
+    text-align: left;
+		form input {
+			width: 100%;
+			padding: 6px 12px;
+      margin-bottom: 20px;
+		}
+		form input::placeholder {
+			font-size: 0.7em;
+		}
+		form input[type=submit] {
+			margin: 15px 0;
+		}
+    #delete-profile {
+			font-size: 1em;
+			text-align: center;
+			input {
+				border: 0;
+				font-weight: bold;
+				color: $error-red;
+				text-decoration: underline;
+        max-width: 160px;
+			}
+      p {
+        margin-bottom: 0;
+				padding-bottom: 0;
+      }
+    }
+  }
+	h1 {
+		color: #aaa;
+		margin: 30px;
+		text-align: center;
+		line-height: 1.2em;
+		display: block;
+	}
+	p {
+		font-size: 1em;
+		padding: 20px;
+	}
+	.fa {
+		margin: 0 5px;
+		padding: 0;
+		margin-top: -2px;
+	}
+
+	.btn-twitch {
+		background-color: #6441A4;
+		color: white;
+	}
+
+	.btn-twitch:hover {
+		background-color: #5a3a93;
+		color: white;
+	}
+	.btn-social {
+		width: 260px;
+		font-size: 1em;
+	}
+	.btn-social:hover {
+		color: #fff;
+	}
+	form input {
+		max-width: 260px;
+		margin: 0 auto;
+		height: 45px;
+		border: 1px solid #8dc63f;
+		background-color: #fff;
+		border-radius: 0px;
+	}
+	/* checkbox was being weird without this */
+	form input[type=checkbox] {
+		height: auto;
+	}
+	a:link,
+	a:visited,
+	a:active {
+		color: #547791;
+		font-weight: bold;
+	}
+	a:hover {
+		color: #27aae1;
+		text-decoration: underline;
+	}
+
+  .btn-sign-in, .actions input[type=submit] {
+  	border: 1px solid #ccc;
+  	background-color: #fff;
+		margin: 15px;
+  	border-radius: 0px;
+  	color: #888;
+  	letter-spacing: 0.5px;
+  	width: 150px;
+  }
+  .btn-sign-in:hover {
+  	color: #000;
+  	text-decoration: underline;
+  }
+	.btn-social {
+		border-radius: 0px;
+		height: 45px;
+		margin-bottom: 15px;
+	}
+	.form-break {
+		display: inline-block;
+		margin: 40px 0 20px 0;
+		width: 90%;
+		border: 1px solid #ddd;
+	}
+	/* On smaller devices, create a seperator line between sections */
+	#or {
+		position: relative;
+		margin: 30px auto;
+		height: 1px;
+		background-color: #ccc;
+		width: 80%;
+	}
+	#or-text {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #fff;
+		width: 70px;
+	}
+	/* Change chrome autofill fields from gross yellow */
+	input:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0px 1000px white inset;
+	}
+	/* override bootstraps ugly defaults  */
+	.form-control:focus, .edit-profile form input:focus {
+		outline: none;
+	  box-shadow: none;
+		box-shadow: 1px 2px 8px -1px #999;
+		border: 1px solid #74cae9;
+	}
+}
+@media screen and (max-width: 352px) {
+	.card-body {
+		width: 100%;
+	}
+
+	.card-head-logo {
+		height: 200px;
+		width: 100%;
+	}
+
+	.card-share {
+		width: 100%;
+	}
+}

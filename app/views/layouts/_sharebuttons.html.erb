@@ -1,0 +1,14 @@
+<% if @social_page_show && page == @social_page %>
+<div style="margin-top: 8px;">
+  <%= render partial: 'layouts/sharebuttons/facebook_share', locals: { page: page } %>
+</div>
+<div style="margin-top: 8px;">
+  <%= render partial: 'layouts/sharebuttons/twitter_share', locals: { page: page } %>
+</div>
+<div style="margin-top: 3px;">
+  <%= render partial: 'layouts/sharebuttons/tumblr_share', locals: { page: page } %>
+</div>
+<div style="margin-top: 6px;">
+  <%= render partial: 'layouts/sharebuttons/pinterest_share', locals: { page: page } %>
+</div>
+<% end %>

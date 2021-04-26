@@ -1,0 +1,103 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.locked-badge {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+.unlocked-badge {
+
+}
+
+.locked-badge, .unlocked-badge {
+  margin-bottom: 10px;
+}
+
+.modal-content .card-container .row {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.badges-modal-open {
+  cursor: pointer;
+}
+
+.card-body .user-stats {
+  margin-top: 35px;
+}
+
+.card-body .user-stats li {
+  height: 100px;
+  width: 100px;
+  padding-right: 10px;
+  float: left;
+}
+
+.card-body .user-stats li a, .card-body .user-stats li p {
+  display: block;
+  color: #547791;
+  font-size: 0.8em;
+}
+
+.card-body .profile-number-box {
+  padding: 10px;
+  border: 1px solid #547791;
+  margin-bottom: 15px;
+}
+
+.dark-blue {
+  color: #547791;
+}
+
+.profile-graph-row {
+  width: 100%;
+  display: block;
+  margin-top: 15px;
+}
+
+.profile-graph-bar {
+  margin-top: 5px;
+  height: 10px;
+  background-color: #547791;
+  float: left;
+}
+
+a.profile-graph-item {
+  float: left;
+  width: 80px;
+  font-size: 0.8em;
+}
+
+.profile-graph-item {
+  display: inline;
+  margin-right: 10px;
+  color: #547791;
+}
+
+.profile-graph-row a.profile-graph-item {
+  text-decoration: underline;
+}
+
+.profile-graph-number {
+  float: left;
+  color: #547791;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+.graph-row .card-share {
+  margin-top: 20px;
+}
+
+.graph-row .card-body {
+  margin-left: 20px;
+}
+
+#loading_card {
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+  top: 61px;
+}

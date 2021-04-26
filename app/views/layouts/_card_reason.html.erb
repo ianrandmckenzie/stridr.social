@@ -1,0 +1,19 @@
+  <span>
+    <% if @user_show %>
+    Liked/followed/subscribed by <%= @user.username %>
+    <% end %>
+    <% if @match %>
+    Liked/followed/subscribed by you and <%= @user.username %>
+    <% end %>
+    <% if @difference %>
+    Liked/followed/subscribed by <%= @user.username %>
+    <% end %>
+    <% if @search %>
+    Search Result
+    <% elsif @home %>
+    Suggested by Stridr
+    <% end %>
+    <% if @social_page_show %>
+    Suggested by Stridr
+    <% end %>
+  </span>

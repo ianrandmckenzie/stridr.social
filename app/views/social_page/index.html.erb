@@ -1,0 +1,74 @@
+
+<!-- Main body content. Cards go here. -->
+<!-- TODO: Remove this placeholder content once recommender is working -->
+<div id="card-wrapper">
+  <!-- BEGIN SOCIAL_PAGES.EACH -->
+<% if @social_pages.count == 0 %>
+<h2>...oh. There's nothing to show!</h2>
+<h3>Connect your social <%= link_to('Accounts', accounts_customize_path)  %> to populate your feed!</h3>
+<% end %>
+<% @social_pages.each do |page| %>
+<a href="<%= page.platform_url %>" target="_blank">
+<div class="card-container card-container-<%= page.platform_name.downcase %>">
+    <div class="social-origin-<%= page.platform_name.downcase %>"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          <!-- Some pages (in Tumblr usually) don't have a page title,
+          so their primary key is instead used. Do not use primary key for
+          other platforms, as it's usually a number or something nonsensical
+          to a user. -->
+          <% if page.page_name == nil || page.page_name == "" %>
+          Untitled
+          <% else %>
+          <%= page.page_name %>
+          <% end %>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          <%= page.platform_name %>
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5  card-head-logo card-head-logo-<%= page.platform_name.downcase %>" style="background-image: url(<%= page.page_image_url %>)"></div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <!-- strip_tags removes potential markup from Tumblr profile descriptions -->
+        <p><%= strip_tags page.description   %></p>
+        <ul>
+          <% if page.platform_name.downcase != 'tumblr' %>
+            <li><%= page.follow_count %> followers</li>
+          <% end %>
+          <li>
+            <% if page.get_likes.size == 1 %>
+            1 Stridr user follows this
+            <% else %>
+            <%= page.get_likes.size %> Stridr users follow this
+            <% end %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          <% if current_user.social_pages_list.where(id: page.id) %>
+            From your likes / follows / subscriptions
+          <% else %>
+            Based on your likes / follows / subscriptions
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
+  </a>
+  <% end %>
+  <!-- END SOCIAL_PAGES.EACH -->
+</div> <!-- end card-wrapper -->

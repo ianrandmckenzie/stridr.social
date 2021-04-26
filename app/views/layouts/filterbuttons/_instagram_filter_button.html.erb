@@ -1,0 +1,5 @@
+<% if !current_user.instagram_filter %>
+    <%= image_tag("social-icons/png/006-instagram.png", alt: "Instagram Logo", class: "toggle-icon toggle-icon-instagram") %>
+<% else %>
+    <%= image_tag("social-icons/png/006-instagram.png", alt: "Instagram Logo", class: "toggle-icon toggle-icon-instagram account-nonactive") %>
+<% end %>

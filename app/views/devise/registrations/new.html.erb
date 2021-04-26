@@ -1,0 +1,136 @@
+
+<div id="card-wrapper">
+
+  <div class="card-container">
+
+    <div class="row">
+      <div class="card-body">
+        <div class="log-in-container">
+
+          <h1>Sign Up</h1>
+          <%= render 'errors' %>
+          <hr>
+
+          <div class="col-md-6 col-md-push-6">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+
+              <div class="form-group">
+                <%= form.email_field :email, autofocus: true, class: "form-control", placeholder: "Email Address" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :username, class: "form-control", placeholder: "Username", required: "true" %>
+              </div>
+
+              <div class="form-group">
+                <% if @minimum_password_length %>
+                  <%= form.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (" + @minimum_password_length.to_s + " characters minimum)" %>
+                <% else %>
+                  <%= form.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+                <% end %>
+              </div>
+              <div class="form-group">
+                <%= form.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm Password" %>
+              </div>
+              <br>
+              <%= form.submit "Sign Up", class: "btn btn-sign-in" %>
+            <% end %>
+          </div>
+
+          <div id="or">
+            <div id="or-text">OR</div>
+          </div>
+
+          <div class="col-md-6 col-md-pull-6">
+            <%= button_to user_facebook_omniauth_authorize_path, class: "btn btn-lg btn-social btn-facebook" do %>
+              <span class="fa fa-facebook"></span> Sign in with Facebook
+            <% end %>
+            <%= button_to user_twitter_omniauth_authorize_path, class: "btn btn-lg btn-social btn-twitter" do %>
+              <span class="fa fa-twitter"></span> Sign in with Twitter
+            <% end %>
+            <%= button_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-social btn-google" do %>
+              <span class="fa fa-google"></span> Sign in with Google
+            <% end %>
+            <%= button_to user_twitch_omniauth_authorize_path, class: "btn btn-lg btn-social btn-twitch" do %>
+              <span class="fa fa-twitch"></span> Sign in with Twitch
+            <% end %>
+            <p>By registering, you agree to the <a href="http://stridr.social/privacy.html" target="_blank">privacy policy</a> and <a href="http://stridr.social/terms.html" target="_blank">terms of service</a>.</p>
+          </div>
+
+          <hr class="form-break">
+
+          <p>
+            Already have an account? <strong><%= link_to "Sign In", new_user_session_path %></strong><br />
+            We're mindful of security and privacy. <strong style="cursor:pointer;color:#547791;" class="badges-modal-open" data-toggle="modal" data-target="#privacyModal">See the information we collect.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- end card-wrapper -->
+
+<div id="privacyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- Temporarily hiding badges - they violate a multitude of branding guidelines -->
+        <div class="card-container card-container-stridr">
+          <div class="row">
+            <div class="col-xs-12 card-head-title">
+              <div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="col-xs-4">
+                      <img src="/logo-final.png" class="img-responsive" />
+                    </div>
+                    <div class="col-xs-8">
+                      <h2>
+                        We do our best to<br />
+                        <span class="dark-blue">collect the bare minimum.</span>
+                      </h2>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="col-xs-12">
+                    <p>
+                      To use our application, you must read and agree to our <a href="https://stridr.social/privacy.html">privacy policy</a>. It’s a great place to understand what information we collect and what we do with it.
+
+                      For quick reference, this is what we keep (with your permission) for Stridr to remain functional:
+                    </p>
+                    <br /><br />
+                    <strong>Private:</strong>
+                    <ul>
+                      <li>
+                        Your email
+                      </li>
+                    </ul>
+                    <br />
+                    <strong>Everything else:</strong>
+                    <ul>
+                      <li>
+                        Who you follow on the platforms Stridr supports
+                      </li>
+                      <li>
+                        Stridr users that follow you
+                      </li>
+                      <li>
+                        Your publically available profile image
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- END BADGES -->
+      </div>
+    </div>
+  </div>
+</div>

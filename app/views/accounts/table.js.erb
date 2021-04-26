@@ -1,0 +1,2 @@
+var element = $("#table_sync");
+element.html("<%= j(render(partial: 'accounts/syncing/table', locals: { current_user: current_user })) %>");

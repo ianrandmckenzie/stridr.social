@@ -1,0 +1,5 @@
+<% if !current_user.facebook_filter %>
+    <%= image_tag("social-icons/png/005-facebook.png", alt: "Facebook Logo", class: "toggle-icon toggle-icon-facebook") %>
+<% else %>
+    <%= image_tag("social-icons/png/005-facebook.png", alt: "Facebook Logo", class: "toggle-icon toggle-icon-facebook account-nonactive") %>
+<% end %>

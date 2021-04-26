@@ -1,0 +1,124 @@
+<div class="card-container card-container-<%= page.platform_name.downcase %>">
+  <% if !@all_in_one_feed %>
+    <div class="social-origin-<%= page.platform_name.downcase %>"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <a href="<%= page.platform_url %>" target="_blank">
+          <h3>
+            <!-- Some pages (in Tumblr usually) don't have a page title,
+            so their primary key is used instead. Do not use primary key for
+            other platforms, as it's usually a number or something nonsensical
+            to a user. -->
+            <% if page.page_name == nil || page.page_name == "" %>
+            Untitled
+            <% else %>
+            <%= page.page_name %>
+            <% end %>
+          </h3>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          <%= page.platform_name %>
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 card-share">
+        <a href="<%= page.platform_url %>" target="_blank">
+          <% if !page.avatar.present? %>
+<div class="card-head-logo card-head-logo-<%= page.platform_name.downcase %>" style="background-image: url(<%= page.page_image_url %>)"></div>
+<% else %>
+<div class="card-head-logo card-head-logo-<%= page.platform_name.downcase %>" style="background-image: url(<%= page.avatar.url(:medium) %>)"></div>
+<% end %>
+        </a>
+        <%= render partial: 'layouts/sharebuttons', locals: { page: page } %>
+      </div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <!-- strip_tags removes potential markup from Tumblr profile descriptions -->
+        <% if @social_page_show && params[:id] == page.id.to_s %>
+        <p><%= page.description %></p>
+        <% elsif page.description %>
+        <p><%= page.description.truncate(350) %></p> <p><strong> <%= page.description.length > 350 ? (link_to "Read More", social_page_path(page), method: :get) : '' %></strong></p>
+        <% end %>
+        <ul>
+          <% if page.platform_name.downcase != 'tumblr' %>
+            <li><%= page.follow_count %> followers</li>
+          <% end %>
+          <li>
+            <% if page.get_likes.size == 1 %>
+            1 Stridr user follows this
+            <% else %>
+            <%= page.get_likes.size %> Stridr users follow this
+            <% end %>
+          </li>
+          <% if @social_page_show && params[:id] == page.id.to_s %>
+          <% if (page == SocialPage.find(params[:id])) %>
+            <li>
+
+            </li>
+            <% else %>
+              <li>
+                <%= link_to "See more pages like this", social_page_path(page), method: :get %>
+              </li>
+          <% end %>
+          <% else %>
+            <li>
+              <%= link_to "See more pages like this", social_page_path(page), method: :get %>
+            </li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <%= render partial: "layouts/card_reason" %>
+      </div>
+    </div>
+    <% end %>
+
+    <% if @all_in_one_feed %>
+    <div class="social-origin-<%= page.platform_name.downcase %>"></div>
+    <div class="row">
+      <div class="col-xs-2 card-share card-share-thumb">
+        <a href="<%= page.platform_url %>" target="_blank">
+          <% if !page.avatar.present? %>
+          <div class="card-head-logo card-head-logo-<%= page.platform_name.downcase %>" style="background-image: url(<%= page.page_image_url %>)"></div>
+          <% else %>
+          <div class="card-head-logo card-head-logo-<%= page.platform_name.downcase %>" style="background-image: url(<%= page.avatar.url(:medium) %>)"></div>
+          <% end %>
+        </a>
+        <%= render partial: 'layouts/sharebuttons', locals: { page: page } %>
+      </div>
+      <div class="col-xs-10 card-bar">
+        <span>
+          <a href="<%= page.platform_url %>" target="_blank">
+            <strong><%= page.page_name %></strong>
+          </a>
+        </span>
+        <hr>
+        <span>
+          <a href="<%= page.recent_post_url %>" target="_blank">
+            See the full post here.
+          </a>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 card-body">
+        <p>
+          <%= page.recent_post_message.html_safe unless !page.recent_post_message %>
+        </p>
+        <% if page.recent_post_image_url %>
+          <img src="<%= page.recent_post_image_url %>" class="img-responsive feed-image">
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>

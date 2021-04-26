@@ -1,0 +1,216 @@
+<tbody>
+  <tr>
+    <td>
+      <%= link_to user_deviantart_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/008-deviantart.png", alt: "DeviantArt Logo") %> Sync DeviantArt
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.deviantart_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.deviantart_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "DeviantArt").count %> users watching
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/005-facebook.png", alt: "Facebook Logo") %> Sync Facebook
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.facebook_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.facebook_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Facebook").count %> pages liked
+      </p>
+    </td>
+  </tr>
+  <!-- Uncomment and adjust code to add Instagram
+  <tr>
+  <td>
+
+  </td>
+    <td>
+      <% link_to user_instagram_omniauth_authorize_path do %>
+        <% image_tag("social-icons/png/006-instagram.png", alt: "Instagram Logo") %> Sync Instagram
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.instagram_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.instagram_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Instagram").count %> users followed
+      </p>
+    </td>
+  </tr> -->
+  <tr>
+    <td>
+      <%= link_to user_pinterest_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/001-pinterest.png", alt: "Pinterest Logo") %> Sync Pinterest
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.pinterest_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.pinterest_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Pinterest").count %> users/boards followed
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_reddit_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/010-reddit.png", alt: "Reddit Logo") %> Sync Reddit
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.reddit_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.reddit_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Reddit").count %> subreddits subscribed to
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_spotify_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/009-spotify.png", alt: "Spotify Logo") %> Sync Spotify
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.spotify_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.spotify_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Spotify").count %> artists followed
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_tumblr_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/002-tumblr.png", alt: "Tumblr Logo") %> Sync Tumblr
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.tumblr_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.tumblr_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Tumblr").count %> blogs followed
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_twitch_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/007-twitch.png", alt: "Twitch.tv Logo") %> Sync Twitch
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.twitch_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.twitch_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Twitch").count %> users followed
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_twitter_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/004-twitter.png", alt: "Twitter Logo") %> Sync Twitter
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.twitter_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.twitter_username %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "Twitter").count %> users followed
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+        <%= image_tag("social-icons/png/003-youtube.png", alt: "YouTube Logo") %> Sync YouTube
+      <% end %>
+    </td>
+    <td>
+      <% if current_user.youtube_loading %>
+      <span class="fa fa-circle-o-notch" aria-hidden="true"></span>
+      <% elsif current_user.google_token %>
+      <span class="glyphicon glyphicon-ok-circle"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+      <% end %>
+    </td>
+    <td>
+      <p>
+        <%= current_user.social_pages_list.where(platform_name: "YouTube").count %> channels subscribed to
+      </p>
+    </td>
+  </tr>
+</tbody>

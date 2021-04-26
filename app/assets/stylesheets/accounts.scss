@@ -1,0 +1,306 @@
+.accounts-container {
+  h1 {
+    color: #aaa;
+    margin: 30px;
+    text-align: center;
+    line-height: 1.2em;
+    display: block;
+  }
+  .table {
+    tr {
+      -webkit-transition: all 0.65s; /* Safari */
+      transition: all 0.65s ease;
+    }
+    td {
+      padding: 10px;
+      img {
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+      }
+      span {
+        padding: 15px;
+        font-size: 1.5em;
+      }
+      .glyphicon-ok-circle {
+        color: #8dc63f;
+      }
+      .glyphicon-remove-circle {
+        color: #ccc;
+      }
+    }
+  }
+  .table tr:hover {
+    max-height: 100px;
+    cursor: pointer;
+  }
+}
+
+.infographic-footer .btn {
+  float: right;
+  margin: 0px 15px 15px 0px;
+  border-radius: 0px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.accounts-container p .q-btn {
+  border-radius: 0px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  font-size: 1em;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.modal-content {
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+}
+
+.modal-content h1 {
+  font-weight: bold;
+  padding: 15px;
+  padding-left: 0;
+}
+
+.modal-content .container {
+  margin-top: 50px;
+}
+
+.modal-content a:hover {
+  text-decoration: none;
+}
+
+.modal-content .infographic-footer p {
+  font-size: 0.8em;
+}
+
+.modal-content .row {
+  margin: 30px 0;
+}
+
+.modal-content .fa {
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.modal-content .heading .fa {
+  text-align: center;
+}
+
+.modal-content p {
+  text-align: left;
+}
+
+.modal-content .modal-body .col-md-12 .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-content .modal-body .col-md-12 .row [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content .modal-body .container {
+  width: inherit;
+}
+
+@media (max-width: 992px){
+  .modal-content .modal-body .heading .fa {
+    padding-top: 40px;
+  }
+}
+
+/* Colors */
+// DeviantArt
+.modal-content .modal-body .deviantart p, .modal-content .modal-body .deviantart h1 {
+  color: white;
+}
+
+.modal-content .deviantart .fa {
+  color: #05cc47;
+}
+
+.modal-content .deviantart .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .deviantart a, .modal-content .deviantart a:hover {
+  color: white;
+}
+
+.modal-content .deviantart .col-md-12 {
+  background-color: black;
+}
+
+// Facebook
+.modal-content .modal-body .facebook p, .modal-content .modal-body .facebook h1 {
+  color: white;
+}
+
+.modal-content .facebook .fa {
+  color: white;
+}
+
+.modal-content .facebook .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .facebook a, .modal-content .facebook a:hover {
+  color: white;
+}
+
+.modal-content .facebook .col-md-12 {
+  background-color: #3b5998;
+}
+
+// Pinterest
+.modal-content .modal-body .pinterest p, .modal-content .modal-body .pinterest h1 {
+  color: #bd081c;
+}
+
+.modal-content .pinterest .fa {
+  color: #bd081c;
+}
+
+.modal-content .pinterest .infographic-footer p {
+  color: red;
+}
+
+.modal-content .pinterest a, .modal-content .pinterest a:hover {
+  color: #bd081c;
+}
+
+.modal-content .pinterest .col-md-12 {
+  background-color: #f6f5f3;
+}
+
+// Reddit
+.modal-content .modal-body .reddit p, .modal-content .modal-body .reddit h1 {
+  color: #5f99cf;
+}
+
+.modal-content .reddit .fa {
+  color: #ff5700;
+}
+
+.modal-content .reddit .infographic-footer p {
+  color: #cee3f8;
+}
+
+.modal-content .reddit a, .modal-content .reddit a:hover {
+  color: #5f99cf;
+}
+
+.modal-content .reddit .col-md-12 {
+  background-color: white;
+}
+
+// Spotify
+.modal-content .modal-body .spotify p, .modal-content .modal-body .spotify h1 {
+  color: white;
+}
+
+.modal-content .spotify .fa {
+  color: #1db954;
+}
+
+.modal-content .spotify .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .spotify a, .modal-content .spotify a:hover {
+  color: white;
+}
+
+.modal-content .spotify .col-md-12 {
+  background-color: #191414;
+}
+
+// Tumblr
+.modal-content .modal-body .tumblr p, .modal-content .modal-body .tumblr h1 {
+  color: white;
+}
+
+.modal-content .tumblr .fa {
+  color: white;
+}
+
+.modal-content .tumblr .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .tumblr a, .modal-content .tumblr a:hover {
+  color: white;
+}
+
+.modal-content .tumblr .col-md-12 {
+  background-color: #36465d;
+}
+
+// Twitch
+.modal-content .modal-body .twitch p, .modal-content .modal-body .twitch h1 {
+  color: white;
+}
+
+.modal-content .twitch .fa {
+  color: white;
+}
+
+.modal-content .twitch .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .twitch a, .modal-content .twitch a:hover {
+  color: white;
+}
+
+.modal-content .twitch .col-md-12 {
+  background-color: #6441a4;
+}
+
+// Twitter
+.modal-content .modal-body .twitter p, .modal-content .modal-body .twitter h1 {
+  color: white;
+}
+
+.modal-content .twitter .fa {
+  color: white;
+}
+
+.modal-content .twitter .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .twitter a, .modal-content .twitter a:hover {
+  color: white;
+}
+
+.modal-content .twitter .col-md-12 {
+  background-color: #1da1f2;
+}
+
+// YouTube
+.modal-content .modal-body .youtube p, .modal-content .modal-body .youtube h1 {
+  color: #cd201f;
+}
+
+.modal-content .youtube .fa {
+  color: #cd201f;
+}
+
+.modal-content .youtube .infographic-footer p {
+  color: lightgray;
+}
+
+.modal-content .youtube a, .modal-content .youtube a:hover {
+  color: #cd201f;
+}
+
+.modal-content .youtube .col-md-12 {
+  background-color: white;
+}

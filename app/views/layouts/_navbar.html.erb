@@ -1,0 +1,110 @@
+<!-- Slide out navigation. Only visible on smaller screens -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="toggleNav(false)">&times;</a>
+  <% if current_user %>
+  <p>
+    Welcome back, <%= current_user.username %>
+  </p>
+  <% end %>
+  <%= render partial: 'layouts/search' %>
+  <%= link_to 'Home', root_path %>
+  <% if user_signed_in? %>
+    <%= link_to('Reload Content Feed', loading_path) %>
+    <%= link_to('Sync Social Accounts', accounts_customize_path)  %>
+    <%= link_to('My Profile', profile_path(current_user.id)) %>
+    <%= link_to('Recommendations', recommendations_path(current_user.id)) %>
+    <%= link_to('Friends', friends_path) %>
+    <%= link_to('Settings', edit_user_registration_path)  %>
+  <% end %>
+  <br />
+  <% if user_signed_in? %>
+    <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
+  <% else %>
+    <%= link_to('Sign In', new_user_session_path)  %>
+  <% end %>
+  <a href="https://goo.gl/forms/UiiZqY6PFbfwVXjJ3">Feedback</a>
+</div>
+
+<!-- Main top bar. Serves as navigation on desktop size screens -->
+<div class="navigation-wrapper">
+  <nav class="navbar-fixed-top">
+    <ul class="logged-in-desktop-links">
+      <li>
+        <a href="https://goo.gl/forms/UiiZqY6PFbfwVXjJ3">Feedback</a>
+      </li>
+      <% if user_signed_in? %>
+        <li>
+          <a href="#" rel="account_popover" data-placement="bottom" data-popover-content="#accountPopover"><span class="glyphicon glyphicon-user"></span></a>
+        </li>
+        <div id="accountPopover" class="hide">
+          <h5>Account</h5>
+          <ul>
+            <li>
+              <%= link_to('Reload Content Feed', loading_path) %>
+            </li>
+            <li>
+              <%= link_to('Sync Social Accounts', accounts_customize_path) %>
+            </li>
+            <li>
+              <%= link_to('My Profile', profile_path(current_user.id)) %>
+            </li>
+            <li>
+              <%= link_to('Recommendations', recommendations_path(current_user.id)) %>
+            </li>
+            <li>
+              <%= link_to('Friends', friends_path) %>
+            </li>
+          </ul>
+        </div>
+
+        <li>
+          <a href="#" rel="settings_popover" data-placement="bottom" data-popover-content="#settingsPopover"><span class="glyphicon glyphicon-cog"></span></a>
+        </li>
+        <div id="settingsPopover" class="hide">
+          <ul>
+            <li>
+              <%= link_to('Settings', edit_user_registration_path)  %>
+            </li>
+            <li>
+              <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
+            </li>
+          </ul>
+        </div>
+        <li>
+          <%= link_to content_tag(:span, "", class: "glyphicon glyphicon-home"), root_path %>
+        </li>
+
+      <% else %>
+      <li>
+        <%= link_to('Log In', new_user_session_path)  %>
+      </li>
+      <% end %>
+      <% if current_user %>
+      <li>
+        <p>
+          Welcome back, <%= current_user.username %>
+        </p>
+      </li>
+      <% end %>
+    </ul>
+    <%= link_to image_tag("logo.png", alt: "STRIDR Logo with disclaimer: Under active development"), root_path %>
+    <div class="col-xs-3 search-bar logged-in-desktop-links">
+      <%= render partial: 'layouts/search' %>
+    </div>
+    <button id="mobile-nav-icon" onclick="toggleNav(true)" type="button" class="btn btn-default btn-md">
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <% if flash.present? %>
+    <div class="flash">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" do %>
+          <div>
+            <%= msg.html_safe %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% end %>
+  </nav>
+</div>

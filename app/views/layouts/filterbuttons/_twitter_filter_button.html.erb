@@ -1,0 +1,5 @@
+<% if !current_user.twitter_filter %>
+    <%= image_tag("social-icons/png/004-twitter.png", alt: "Twitter Logo", class: "toggle-icon toggle-icon-twitter") %>
+<% else %>
+    <%= image_tag("social-icons/png/004-twitter.png", alt: "Twitter Logo", class: "toggle-icon toggle-icon-twitter account-nonactive") %>
+<% end %>

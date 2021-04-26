@@ -1,0 +1,168 @@
+.toggle-icon {
+  width: 50px;
+  height: auto;
+}
+
+.account-nonactive {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+.account-active {
+
+}
+
+.toggle-icons div {
+  display: inline-block;
+}
+
+.toggle-icon {
+  padding: 8px;
+}
+
+.settings-container {
+  margin-top: 140px;
+}
+
+.settings-nav .active {
+  background-color: #e7e7e7;
+}
+
+.settings-box, .settings-box-bottom {
+  background-color: #ffffff;
+	box-shadow: 1px 2px 8px -1px #999;
+  padding: 35px;
+  padding-top: 5px;
+}
+
+.settings-box-bottom {
+  margin-top: 50px;
+}
+
+.settings-nav {
+  background-color: #ffffff;
+	box-shadow: 1px 2px 8px -1px #999;
+  padding: 0px;
+}
+
+.settings-nav .settings-tab-button {
+  height: 50px;
+  width: 100%;
+  color: #777777;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.settings-nav .settings-tab-button a {
+  color: #777777;
+}
+
+.settings-nav .settings-tab-button:hover {
+  background-color: #e7e7e7;
+}
+
+.settings-nav .fa {
+  float: right;
+  font-size: 1.5em;
+}
+
+.actions {
+  width: 100%;
+}
+
+.settings-checkbox {
+  opacity: 1;
+  z-index: 100;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
+}
+
+input[type=checkbox] {
+  width: 35px;
+  height: 35px;
+}
+
+.toggle-brand {
+  width: 100%;
+}
+
+.toggle-brand .checkbox-container {
+  float: right;
+}
+
+.checkbox-container {
+  position: relative;
+}
+
+.checkbox-container span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    display: block;
+    background: image-url('checkbox-on.png');
+}
+
+.checkbox-container input:checked + span {
+    background: image-url('checkbox-off.png');
+}
+
+.settings-box, .settings-box-bottom {
+
+	input[type=text], input[type=submit], input[type=email], input[type=password] {
+    width: 40%;
+		margin: 0 auto;
+		height: 45px;
+		border: 1px solid #8dc63f;
+		background-color: #fff;
+		border-radius: 0px;
+	}
+
+  h2 {
+    font-weight: bold;
+    color: #547791;
+  }
+
+  hr {
+    border-color: #cce4b8;
+  }
+
+  .gray-hr {
+    border-color: #e7e7e7;
+    margin: 5px;
+  }
+
+  input::placeholder {
+    font-size: 0.7em;
+  }
+}
+
+.modal-dialog .modal-content .modal-body hr {
+  border-color: #cce4b8;
+  border-width: 3px;
+}
+
+.modal-dialog .modal-content .modal-body p {
+  font-size: 1.5em;
+  color: #777777;
+}
+
+.modal-dialog .modal-content .modal-body p a {
+  font-weight: bold;
+}
+
+.modal-body strong, .modal-dialog .modal-content .modal-body ul li {
+  font-size: 1.2em;
+  color: #777777;
+}
+
+.modal-body h2 {
+  color: #547791;
+}
+
+.modal-body h2 .dark-blue {
+  font-weight: bold;
+}

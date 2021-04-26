@@ -1,0 +1,5 @@
+<% if !current_user.tumblr_filter %>
+    <%= image_tag("social-icons/png/002-tumblr.png", alt: "Tumblr Logo", class: "toggle-icon toggle-icon-tumblr") %>
+<% else %>
+    <%= image_tag("social-icons/png/002-tumblr.png", alt: "Tumblr Logo", class: "toggle-icon toggle-icon-tumblr account-nonactive") %>
+<% end %>

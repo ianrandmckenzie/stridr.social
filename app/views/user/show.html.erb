@@ -1,0 +1,417 @@
+
+<!-- Main body content. Cards go here. -->
+<div id="card-wrapper">
+  <!-- BEGIN USER PROFILE -->
+<div class="card-container card-container-stridr">
+    <div class="social-origin-stridr"></div>
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3>
+          <%= @user.username %>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-bar">
+        <span>
+          <% if !@user.location %>
+          Stridr
+          <% else %>
+          <%= @user.location %>
+          <% end %>
+        </span>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 card-share">
+        <a href="<%= request.path %>" target="_blank">
+        <% if @user.image %>
+          <div class="card-head-logo" style="background-image: url(<%= @user.image %>)"></div>
+          <% else %>
+          <div class="card-head-logo" style="background-image:url(<%= asset_path 'logo-bw.png' %>;)"></div>
+          <% end %>
+        </a>
+      </div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <% if !@user.description %>
+          <% if @user == current_user %>
+          <p>Tell people why you love social media in your description at your accounts <strong><%= link_to('settings', edit_user_registration_path)  %></strong> page! Don't forget to sync all of your social <strong><%= link_to('accounts', accounts_customize_path) %></strong>.</p>
+          <% else %>
+          <p>Compare interests on social media! Don't forget to add all of your social <%= link_to('Accounts', accounts_customize_path)  %> to increase accuracy!</p>
+          <% end %>
+        <% else %>
+        <p><i><%= @user.description %></i></p>
+        <% end %>
+        <ul class="user-stats text-center">
+          <li>
+            <span class="profile-number-box"><%= @user.find_liked_items.count %></span><br /><br />
+            <p>Likes/follows across social media</p>
+          </li>
+          <li class="badges-modal-open" data-toggle="modal" data-target="#badgesModal">
+            <span class="profile-number-box"><%= @badges %></span><br /><br />
+            <p><strong>Badges Earned</strong></p>
+          </li>
+          <% if current_user %>
+            <li>
+              <span class="profile-number-box"><%= @matches_count %></span><br /><br />
+              <%= link_to "View interests that you share", match_path(@user.id) %>
+            </li>
+            <li>
+              <span class="profile-number-box"><%= @differences_count %></span><br /><br />
+              <%= link_to "Discover " + @user.username + "'s interests", difference_path(@user.id) %>
+            </li>
+          <% else %>
+          <li>
+            <span class="profile-number-box">?</span><br /><br />
+            <%= link_to "View interests that you share", match_path(@user.id) %>
+          </li>
+          <li>
+            <span class="profile-number-box">?</span><br /><br />
+            <%= link_to "View interests that you don't share", difference_path(@user.id) %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="row graph-row">
+      <div class="col-xs-5 card-share">
+        <p class="dark-blue">
+          Share profile:
+        </p>
+        <%= social_share_button_tag("Compare your likes/follows/subscriptions on Social Media with " + @user.username + "!", :url => "https://stridr.social/user/" + @user.id.to_s) %>
+      </div>
+      <div class="col-xs-7 col-sm-9 card-body">
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://<%= @user.deviantart_uid %>.deviantart.com">DeviantArt</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@deviantart_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @deviantart_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.facebook.com/<%= @user.facebook_uid %>">Facebook</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@facebook_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @facebook_count %>
+          </div>
+        </div>
+        <!-- <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.instagram.com/<%= @user.instagram_uid %>">Instagram</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@instagram_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @instagram_count %>
+          </div>
+        </div> -->
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.pinterest.com/<%= @user.pinterest_username %>">Pinterest</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@pinterest_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @pinterest_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.reddit.com/user/<%= @user.reddit_username %>">Reddit</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@reddit_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @reddit_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://open.spotify.com/user/<%= @user.spotify_uid %>">Spotify</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@spotify_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @spotify_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://<%= @user.tumblr_uid %>.tumblr.com/">Tumblr</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@tumblr_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @tumblr_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.twitch.tv/<%= @user.twitch_username %>">Twitch</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@twitch_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @twitch_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://www.twitter.com/<%= @user.twitter_username %>">Twitter</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@twitter_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @twitter_count %>
+          </div>
+        </div>
+        <div class="profile-graph-row row">
+          <a class="profile-graph-item" target="_blank" href="https://plus.google.com/<%= @user.google_uid %>">YouTube<br />(via Google)</a>
+          <div class="profile-graph-bar profile-graph-item" style="width:<%= (@youtube_count.to_f / @user.find_liked_items.count.to_f * 100) %>%">
+            &nbsp;
+          </div>
+          <div class="profile-graph-number">
+            <%= @youtube_count %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card-based-on">
+        <span>
+          Scroll on!
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- END USER PROFILE -->
+
+  <div class="card-container card-container-stridr">
+    <div class="row">
+      <div class="col-xs-8 card-head-title">
+        <h3><%= @user.username %>'s Interests</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- BEGIN SOCIAL_PAGES.EACH -->
+<% if @social_pages.count == 0 && current_user %>
+<h2>...oh. There's nothing to show!</h2>
+<h3>Connect your social <%= link_to('Accounts', accounts_customize_path)  %> to populate your feed!</h3>
+<% elsif @social_pages.count == 0 %>
+<h2>...oh. There's nothing to show!</h2>
+<h3>It seems <%= @user.username %> hasn't connected any of their social accounts!<br /><br />Alternatively, you may have too many filters on. <%= link_to "Whitelist more platforms to see more.", edit_user_registration_path %></h3>
+<% end %>
+<%= render partial: 'social_pages', object: @social_pages, locals: { current_user: current_user } %>
+  <!-- END SOCIAL_PAGES.EACH -->
+</div> <!-- end card-wrapper -->
+
+<% if !@social_pages.last_page? %>
+<div class="card-container card-container-stridr text-center footer">
+  <div class="row">
+    <div class="col-xs-12 card-head-title">
+      <h3 class="pagination">
+        <%= link_to_next_page(@social_pages, "Load More", remote: true) %>
+      </h3>
+      <span class="fa fa-circle-o-notch loading" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div id="badgesModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- BEGIN BADGES -->
+        <!-- Temporarily hiding badges - they violate a multitude of branding guidelines -->
+        <div class="card-container card-container-stridr">
+          <div class="row">
+            <div id="badges" class="col-xs-12 card-head-title">
+              <div class="badges">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="col-xs-12 card-bar">
+                      <span>
+                        Social Platforms Synced
+                      </span>
+                      <hr><br />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <% if @user.deviantart_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-deviantart.png", :alt => "DeviantArt Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-deviantart.png", :alt => "DeviantArt Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.facebook_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-facebook.png", :alt => "Facebook Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-facebook.png", :alt => "Facebook Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <!-- Uncomment code and adjust code to add Instagram
+                    <% if @user.instagram_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <% image_tag("badges/synced-instagram.png", :alt => "Instagram Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <% image_tag("badges/unsynced-instagram.png", :alt => "Instagram Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    -->
+                    <% if @user.pinterest_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-pinterest.png", :alt => "Pinterest Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-pinterest.png", :alt => "Pinterest Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.reddit_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-reddit.png", :alt => "Reddit Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-reddit.png", :alt => "Reddit Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.spotify_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-spotify.png", :alt => "Spotify Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-spotify.png", :alt => "Spotify Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.tumblr_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-tumblr.png", :alt => "Tumblr Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-tumblr.png", :alt => "Tumblr Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.twitch_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-twitch.png", :alt => "Twitch Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-twitch.png", :alt => "Twitch Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.twitter_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-twitter.png", :alt => "Twitter Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-twitter.png", :alt => "Twitter Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                    <% if @user.google_uid %>
+                    <div class="col-xs-2 unlocked-badge">
+                      <%= image_tag("badges/synced-youtube.png", :alt => "YouTube Synced Badge", :class => "img-responsive") %>
+                    <% else %>
+                    <div class="col-xs-2 locked-badge">
+                      <%= image_tag("badges/unsynced-youtube.png", :alt => "YouTube Synced Badge", :class => "img-responsive") %>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-12 card-bar">
+                  <span>
+                    Social Pages Followed / Liked
+                  </span>
+                  <hr><br>
+                </div>
+              </div>
+              <div class="row">
+                <% if @user.social_pages_list.count >= 50 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/socialpages-50.png", :alt => "50 interests across social media", :class => "img-responsive") %>
+                </div>
+                <% if @user.social_pages_list.count >= 100 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/socialpages-100.png", :alt => "100 interests across social media", :class => "img-responsive") %>
+                </div>
+                <% if @user.social_pages_list.count >= 250 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/socialpages-250.png", :alt => "250 interests across social media", :class => "img-responsive") %>
+                </div>
+                <% if @user.social_pages_list.count >= 1000 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/socialpages-1000.png", :alt => "1000 interests across social media", :class => "img-responsive") %>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-xs-12 card-bar">
+                  <span>
+                    Friends &amp; Follow + Followed
+                  </span>
+                  <hr><br>
+                </div>
+              </div>
+              <div class="row">
+                <% if @user.following.all.count >= 10 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/friends-10.png", :alt => "10 friends on Stridr", :class => "img-responsive") %>
+                </div>
+                <% if @user.following.all.count >= 50 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/friends-50.png", :alt => "50 friends on Stridr", :class => "img-responsive") %>
+                </div>
+                <% if @user.following.all.count >= 100 %>
+                <div class="col-xs-3 unlocked-badge">
+                <% else %>
+                <div class="col-xs-3 locked-badge">
+                <% end %>
+                  <%= image_tag("badges/friends-100.png", :alt => "100 friends on Stridr", :class => "img-responsive") %>
+                </div>
+                <div class="col-xs-3 text-center">
+                  <% if @user.id <= 1000 %>
+                  <%= image_tag("badges/innovator.png", :alt => "Innovator: First 1000 people to sign up!", :class => "img-responsive", :caption => "Exclusive Badge") %>
+                  <i>Exclusive Badge: First 1000 users.</i>
+                  <% elsif @user.id <= (User.all.count * 0.05).floor %>
+                  <%= image_tag("badges/early-adopter.png", :alt => "Early Adopter: First 5% of people to sign up!", :class => "img-responsive", :caption => "Exclusive Badge") %>
+                  <i>Exclusive Badge: First 5% of users.</i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- END BADGES -->
+      </div>
+    </div>
+  </div>
+</div>

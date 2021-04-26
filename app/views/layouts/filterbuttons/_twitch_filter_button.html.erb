@@ -1,0 +1,5 @@
+<% if !current_user.twitch_filter %>
+    <%= image_tag("social-icons/png/007-twitch.png", alt: "Twitch.tv Logo", class: "toggle-icon toggle-icon-twitch") %>
+<% else %>
+    <%= image_tag("social-icons/png/007-twitch.png", alt: "Twitch.tv Logo", class: "toggle-icon toggle-icon-twitch account-nonactive") %>
+<% end %>

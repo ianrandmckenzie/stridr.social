@@ -1,0 +1,231 @@
+<div class="container settings-container">
+  <div class="row">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="col-md-3 settings-nav">
+      <div class="settings-tab-button active">
+        <span class="tab-title">Account</span> <i class="fa fa-angle-right"></i>
+      </div>
+      <div class="settings-tab-button">
+        <span class="tab-title">Filters</span> <i class="fa fa-angle-right"></i>
+      </div>
+      <div class="settings-tab-button">
+        <span class="tab-title">Profile</span> <i class="fa fa-angle-right"></i>
+      </div>
+      <!-- <div class="settings-tab-button">
+        Suggestions <i class="fa fa-angle-right"></i>
+      </div> -->
+      <!-- <div class="settings-tab-button">
+        Sync Social Accounts <i class="fa fa-angle-right"></i>
+      </div> -->
+      <a href="https://goo.gl/forms/UiiZqY6PFbfwVXjJ3">
+        <div class="settings-tab-button">
+          Feedback <i class="fa fa-angle-double-right"></i>
+        </div>
+      </a>
+    </div>
+    <div id="account" class="col-md-7 col-md-offset-1 settings-box">
+      <h2>Account Settings</h2>
+      <hr>
+        <div class="field">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, autofocus: true %>
+        </div><br />
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email %>
+        </div><br />
+
+
+        <div class="field">
+          <%= f.label "New Password (Optional)" %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+          <% end %>
+        </div><br />
+
+        <div class="field">
+          <%= f.label "New Password Confirmation" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div><br />
+
+        <div class="field">
+          <%= f.label :current_password %> <br /><i>(we need your current password to change your password)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div><br /><hr /><br />
+
+        <div class="actions">
+          <%= f.submit "Update" %>
+        </div>
+<!--
+      <hr />
+      <div id="delete-profile">
+        <p>
+          Unhappy with your experience?
+        </p>
+        <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+      </div> -->
+    </div>
+    <div id="profile" class="col-md-7 col-md-offset-1 settings-box" style="display:none;">
+      <h2>Profile Info</h2>
+      <hr />
+        <div class="field">
+          <%= f.label :description %><br />
+          <%= f.text_field :description %>
+        </div>
+
+        <div class="field">
+          <%= f.label :location %><br />
+          <%= f.text_field :location %>
+        </div>
+
+        <div class="field">
+          <%= f.label :favorite_words %><br />
+          <%= f.text_field :favorite_words, placeholder: "Examples: happiness, Gandhi, gun, dance, fascinate" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :least_favorite_words %><br />
+          <%= f.text_field :least_favorite_words, placeholder: "Examples: moist, Trump, liberals, jogging, swinger" %>
+        </div>
+
+        <!-- <div class="field">
+          <label>Suggestion Accuracy</label><hr />
+          <%= f.label :min_recommendation, "Minimum" %>
+          <%= f.range_field :min_recommendation, value: current_user.min_recommendation, min: 3, max: 90 %>
+          <%= f.label :max_recommendation, "Maximum" %>
+          <%= f.range_field :max_recommendation, value: current_user.max_recommendation, min: 10, max: 99 %>
+        </div> -->
+        <br /><hr /><br />
+
+        <div class="actions">
+          <%= f.submit "Update" %>
+        </div>
+    </div>
+    <div id="filters" class="col-md-7 col-md-offset-1 settings-box" style="display:none;">
+      <h2>Toggle Platforms in Your Feeds</h2>
+      <hr />
+        <div class="toggle-icons">
+          <div class="deviantart-toggle toggle-brand">
+            <%= f.label :deviantart_filter do %>
+            <%= render partial: 'layouts/filterbuttons/deviantart_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :deviantart_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="facebook-toggle toggle-brand">
+            <%= f.label :facebook_filter do %>
+            <%= render partial: 'layouts/filterbuttons/facebook_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :facebook_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+            <!-- Adjust below code to add Instagram filter
+          <div class="instagram-toggle toggle-brand">
+          <%= f.label :instagram_filter do %>
+            <%= render partial: 'layouts/filterbuttons/instagram_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :instagram_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div> -->
+          <div class="pinterest-toggle toggle-brand">
+            <%= f.label :pinterest_filter do %>
+            <%= render partial: 'layouts/filterbuttons/pinterest_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :pinterest_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="reddit-toggle toggle-brand">
+            <%= f.label :reddit_filter do %>
+            <%= render partial: 'layouts/filterbuttons/reddit_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :reddit_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="spotify-toggle toggle-brand">
+            <%= f.label :spotify_filter do %>
+            <%= render partial: 'layouts/filterbuttons/spotify_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :spotify_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="tumblr-toggle toggle-brand">
+            <%= f.label :tumblr_filter do %>
+            <%= render partial: 'layouts/filterbuttons/tumblr_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :tumblr_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="twitch-toggle toggle-brand">
+            <%= f.label :twitch_filter do %>
+            <%= render partial: 'layouts/filterbuttons/twitch_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :twitch_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="twitter-toggle toggle-brand">
+            <%= f.label :twitter_filter do %>
+            <%= render partial: 'layouts/filterbuttons/twitter_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :twitter_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+          <hr class="gray-hr">
+          <div class="youtube-toggle toggle-brand">
+            <%= f.label :youtube_filter do %>
+            <%= render partial: 'layouts/filterbuttons/youtube_filter_button' %>
+            <% end %>
+            <div class="checkbox-container">
+              <%= f.check_box :youtube_filter, class: "settings-checkbox" %>
+              <span></span>
+            </div>
+          </div>
+
+          <br /><hr /><br />
+
+          <div class="actions">
+            <%= f.submit "Update" %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-md-offset-4 settings-box-bottom">
+      <br />
+      <div id="delete-profile">
+        <p>
+          Unhappy with your experience?
+        </p>
+        <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

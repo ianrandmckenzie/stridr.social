@@ -1,0 +1,58 @@
+<div id="card-wrapper">
+
+  <div class="card-container">
+
+    <div class="row">
+      <div class="card-body">
+        <div class="accounts-container">
+
+          <h1>Social Platforms</h1>
+          <hr />
+          <div class="col-md-10 col-md-offset-1">
+          <p>
+            You can link your other social media accounts to Stridr to increase
+            the amount of contet in your feed!
+            You can toggle what platforms are visible in the feed using the
+            toggle menu in the navigation. Click the platform link again to update new likes/follows.
+          </p>
+          <p>
+            Sorry, Twitter power-users. Due to technical restrictions, we can only look at the 3,000 most recent people you follow.
+          </p>
+          <br />
+          <p>
+            <strong>Note: If you have a lot of likes, connecting your account may take some time.
+          Please be patient, our server's hamsters are running as fast as they can!</strong>
+          </p>
+          <p>
+            Learn more about:
+            <button class="q-btn" data-toggle="modal" data-target="#deviantArtModal">DeviantArt</button>
+            <button class="q-btn" data-toggle="modal" data-target="#facebookModal">Facebook</button>
+            <button class="q-btn" data-toggle="modal" data-target="#pinterestModal">Pinterest</button>
+            <button class="q-btn" data-toggle="modal" data-target="#redditModal">Reddit</button>
+            <button class="q-btn" data-toggle="modal" data-target="#spotifyModal">Spotify</button>
+            <button class="q-btn" data-toggle="modal" data-target="#tumblrModal">Tumblr</button>
+            <button class="q-btn" data-toggle="modal" data-target="#twitchModal">Twitch</button>
+            <button class="q-btn" data-toggle="modal" data-target="#twitterModal">Twitter</button>
+            <button class="q-btn" data-toggle="modal" data-target="#youtubeModal">YouTube</button>
+          </p>
+          <br />
+
+              <table class="table" id="table_sync">
+                <%= render partial: 'accounts/syncing/table', locals: { current_user: current_user } %>
+              </table>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: 'accounts/what_is/deviantart' %>
+<%= render partial: 'accounts/what_is/facebook' %>
+<%= render partial: 'accounts/what_is/pinterest' %>
+<%= render partial: 'accounts/what_is/reddit' %>
+<%= render partial: 'accounts/what_is/spotify' %>
+<%= render partial: 'accounts/what_is/tumblr' %>
+<%= render partial: 'accounts/what_is/twitch' %>
+<%= render partial: 'accounts/what_is/twitter' %>
+<%= render partial: 'accounts/what_is/youtube' %>

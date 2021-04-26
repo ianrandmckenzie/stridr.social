@@ -1,0 +1,9 @@
+<%= form_tag root_path, :class => 'navbar-form', :method => :get do %>
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default search-button" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </span>
+    <%= text_field_tag :search, params[:search], :class => 'form-control results-search-txt', :placeholder=>"Search...", :id => nil %>
+  </div><!-- /input-group -->
+  <div class="results"></div>
+<% end %>

@@ -1,0 +1,5 @@
+<% if !current_user.reddit_filter %>
+    <%= image_tag("social-icons/png/010-reddit.png", alt: "Reddit Logo", class: "toggle-icon toggle-icon-reddit") %>
+<% else %>
+    <%= image_tag("social-icons/png/010-reddit.png", alt: "Reddit Logo", class: "toggle-icon toggle-icon-reddit account-nonactive") %>
+<% end %>

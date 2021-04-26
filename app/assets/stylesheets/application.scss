@@ -1,0 +1,92 @@
+/* TODO: Break down 'card-styles' and 'navigation' partials into proper
+*        SCSS format and file structure.
+*  TODO: Limit Bootstrap imports to only the components needed.
+*/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-social";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "user";
+@import "registrations";
+@import "social-share-button";
+@import "partials/*";
+@import "accounts";
+
+.social-share-button {
+  .ssb-icon {
+    background-size: 35px 35px;
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+  }
+}
+
+.social-share-button .ssb-facebook {
+  background-image: image-url('share-facebook.png');
+}
+
+.social-share-button .ssb-pinterest {
+  background-image: image-url('share-pinterest.png');
+}
+
+.social-share-button .ssb-tumblr {
+  background-image: image-url('share-tumblr.png');
+}
+
+.social-share-button .ssb-twitter {
+  background-image: image-url('share-twitter.png');
+}
+
+.footer {
+  margin-top: 55vh;
+}
+
+.loading {
+  font-size: 1em;
+  color: #547791;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 2000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 2000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(0deg);
+}
+
+.fa.fa-circle-o-notch {
+  color: #ccc;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 1000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 1000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(0deg);
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}

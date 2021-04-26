@@ -1,0 +1,5 @@
+<% if !current_user.pinterest_filter %>
+    <%= image_tag("social-icons/png/001-pinterest.png", alt: "Pinterest Logo", class: "toggle-icon toggle-icon-pinterest") %>
+<% else %>
+    <%= image_tag("social-icons/png/001-pinterest.png", alt: "Pinterest Logo", class: "toggle-icon toggle-icon-pinterest account-nonactive") %>
+<% end %>

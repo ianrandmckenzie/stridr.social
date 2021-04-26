@@ -1,0 +1,29 @@
+// Append new data
+$("<%=j render(:partial => 'social_pages', :object => @social_pages) %>")
+  .appendTo($("#card-wrapper"));
+
+// Update pagination link
+<% if @social_pages.last_page? %>
+  $('.pagination').html("That's all, folks!");
+<% elsif @social_pages.current_page == 1 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'Show me more, please', :remote => true) %>");
+<% elsif @social_pages.current_page == 2 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'More, please', :remote => true) %>");
+<% elsif @social_pages.current_page == 3 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'More!', :remote => true) %>");
+<% elsif @social_pages.current_page == 4 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'More!!', :remote => true) %>");
+<% elsif @social_pages.current_page == 5 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'MOAR!!!', :remote => true) %>");
+<% elsif @social_pages.current_page == 6 %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'The beast hungers...', :remote => true) %>");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@social_pages, 'FEED ME!!', :remote => true) %>");
+<% end %>
